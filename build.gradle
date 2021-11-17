@@ -261,7 +261,7 @@ tasks.register("copyPluginTestAlias_ruby", Copy) {
         rename "plugin_aliases_hashed_test.yml", "plugin_aliases.yml"
     }
     into "spec/unit/plugin_manager/"
-}
+}øart
 
 tasks.register("copyPluginTestAlias_java", Copy) {
     description "Copy the marked test plugin_aliases.yml file into logstash-core's test resources"
