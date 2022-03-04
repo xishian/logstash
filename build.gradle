@@ -305,9 +305,6 @@ def assemblyDeps = [downloadAndInstallJRuby, assemble] + subprojects.collect {
   it.tasks.findByName("assemble")
 }
 
-//def assemblyDeps = [downloadAndInstallJRuby, assemble]
-
-
 def bundlerVersion = "~> 2"
 
 tasks.register("installBundler") {
@@ -328,9 +325,9 @@ tasks.register("bootstrap"){
 
 tasks.register("installDefaultGems") {
     dependsOn bootstrap
-    doLast {
-        rake(projectDir, buildDir, 'plugin:install-default')
-    }
+  doLast {
+      rake(projectDir, buildDir, 'plugin:install-default')
+  }
 }
 
 tasks.register("installTestGems") {
