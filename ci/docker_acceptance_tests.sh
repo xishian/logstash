@@ -5,7 +5,7 @@ set -x
 # Since we are using the system jruby, we need to make sure our jvm process
 # uses at least 1g of memory, If we don't do this we can get OOM issues when
 # installing gems. See https://github.com/elastic/logstash/issues/5179
-export JRUBY_OPTS="-J-Xmx1g"
+export JRUBY_OPTS="-J-Xmx1g -J--add-opens=java.base/java.security=ALL-UNNAMED -J--add-opens=java.base/sun.nio.ch=ALL-UNNAMED -J--add-opens=java.base/java.io=ALL-UNNAMED -J--add-opens=java.base/java.security.cert=ALL-UNNAMED"
 export GRADLE_OPTS="-Xmx4g -Dorg.gradle.daemon=false -Dorg.gradle.logging.level=info -Dfile.encoding=UTF-8"
 
 if [ -n "$BUILD_JAVA_HOME" ]; then
@@ -52,7 +52,6 @@ elif [[ $SELECTED_TEST_SUITE == "full" ]]; then
   echo "Acceptance: Installing dependencies"
   cd $QA_DIR
   bundle install
-
   echo "Acceptance: Running the tests"
   bundle exec rspec docker/spec/full/*_spec.rb
 elif [[ $SELECTED_TEST_SUITE == "ubi8" ]]; then
