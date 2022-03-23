@@ -2,6 +2,7 @@ source "https://rubygems.org"
 gem "runner-tool", :git => "https://github.com/purbon/runner-tool.git"
 gem "rspec", "~> 3.1.0"
 gem "rake"
+gem "jruby-openssl", "~> 0.11"
 gem "stud"
 gem "pry", :group => :test
 gem 'docker-api'
